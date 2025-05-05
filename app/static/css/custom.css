@@ -240,7 +240,8 @@ pre, code, .ascii-banner, .installer-copy-block code {
     padding: 2rem 1.5rem 2.7rem 1.5rem; /* más padding abajo para el footer */
     position: relative;
     transition: transform 0.13s, box-shadow 0.13s;
-    min-height: 220px;
+    min-height: 300px;
+    max-height: 300px;
     max-width: 320px;
     min-width: 260px;
     width: 100%;
@@ -248,6 +249,7 @@ pre, code, .ascii-banner, .installer-copy-block code {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow: hidden;
 }
 
 .template-card-bottom {
@@ -299,6 +301,13 @@ pre, code, .ascii-banner, .installer-copy-block code {
     color: #b5c0d0;
     font-size: 1rem;
     margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 5.6em; /* Aproximadamente 4 líneas */
+    min-height: 3.2em;
 }
 .card-template .template-btn {
     margin-top: auto;
