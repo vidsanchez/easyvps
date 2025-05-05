@@ -1,0 +1,52 @@
+metadata:
+  name: Baserow
+  description: Plantilla para Baserow
+  version: 1.0.0
+  category: General
+  dependencies:
+  - Postgres
+  required_networks:
+  - network_public
+  user_fields:
+  - field: subdominio
+    label: Subdominio
+    type: string
+    required: true
+    default: ''
+    description: Configuración para subdominio
+    validation:
+      pattern: ^[a-z0-9-]+$
+      min_length: null
+      max_length: null
+  - field: password
+    label: Password
+    type: password
+    required: true
+    default: ''
+    description: Configuración para password
+    validation:
+      pattern: null
+      min_length: 8
+      max_length: 100
+  tags:
+  - baserow
+template:
+  version: '3.7'
+  services:
+    baserow:
+      image: luizeof/smtp2http:latest
+      entrypoint:
+      - smtp2http
+      - --user=[[username]]
+      - --pass=[[password]]
+      - --webhook=[[subdominio]]
+      networks:
+      - network_public
+      deploy:
+        placement:
+          constraints:
+          - node.role == manager
+  networks:
+    network_public:
+      external: true
+      name: network_public

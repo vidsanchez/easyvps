@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+jinja2
+pyyaml
+requests
+python-dotenv
+pydantic>=1.10,<2

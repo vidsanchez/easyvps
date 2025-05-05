@@ -1,0 +1,446 @@
+/* custom.css: Mejoras visuales tipo cards grid */
+
+/* ====== FORMULARIOS EASYVPS (INLINE Y FULLPAGE) ====== */
+.form-field-block {
+  background: #232937;
+  border-radius: 12px;
+  padding: 1.1em 1.3em 0.7em 1.3em;
+  margin-bottom: 1.1em;
+  box-shadow: 0 1px 8px #0002;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28em;
+  border: 1.5px solid #232937;
+  transition: border 0.17s;
+}
+.form-field-block:focus-within {
+  border: 1.5px solid #ffd600;
+}
+.form-label {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.09em;
+  margin-bottom: 0.18em;
+  gap: 0.35em;
+  color: #b5c0d0;
+}
+
+.form-fields-intro {
+  background: #232937;
+  color: #ffd600;
+  font-weight: 600;
+  font-size: 1.09em;
+  border-bottom: 2.5px solid #ffd600;
+  border-radius: 10px 10px 0 0;
+  padding: 0.75em 1.3em 0.55em 1.3em;
+  margin-bottom: 0.7em;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+.required-indicator {
+  margin-left: 0.3em;
+  vertical-align: middle;
+  width: 0.9em;
+  height: 0.9em;
+  display: inline-block;
+}
+.form-description {
+  color: #b5c0d0;
+  font-size: 0.97em;
+  margin-top: 0.18em;
+  margin-bottom: 0.1em;
+}
+.dynamic-form input.form-control {
+  background: #181c23;
+  border: 1.5px solid #28304a;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 1.07em;
+  padding: 0.57em 1em;
+  transition: border 0.14s, box-shadow 0.14s;
+}
+.dynamic-form input.form-control:focus {
+  border: 1.5px solid #ffd600;
+  box-shadow: 0 0 0 2px #ffd60033;
+}
+.input-group {
+  display: flex;
+  align-items: stretch;
+}
+.input-group .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group .btn-genpass {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* ====== FIN FORMULARIOS EASYVPS ====== */
+
+/* ====== MODAL INLINE FORMULARIO EASYVPS ====== */
+.modal-header-easyvps {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2em;
+  margin-bottom: 0.7em;
+}
+.modal-meta-easyvps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  align-items: center;
+}
+.badge {
+  display: inline-block;
+  font-size: 0.93em;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.2em 0.7em;
+  margin-right: 0.2em;
+  background: #232937;
+  color: #ffd600;
+  letter-spacing: 0.01em;
+}
+.badge-category { background: #232937; color: #ffd600; }
+.badge-version { background: #ffd600; color: #232937; }
+.badge-tag { background: #1e2533; color: #7fe7c4; }
+.badge-dep { background: #28304a; color: #6ec4ff; }
+.badge-net { background: #1e2533; color: #b5c0d0; }
+
+.modal-desc-easyvps {
+  font-size: 1.02em;
+  color: #e2e8f0;
+  margin-bottom: 0.2em;
+}
+
+.modal-deps-nets-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 2em;
+  margin-bottom: 0.5em;
+}
+.modal-deps-easyvps {
+  flex: 1 1 0;
+  text-align: left;
+  font-size: 0.98em;
+}
+.modal-nets-easyvps {
+  flex: 1 1 0;
+  text-align: right;
+  font-size: 0.98em;
+}
+
+/* FORMULARIO ORGANIZADO */
+.dynamic-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.dynamic-form .mb-3 {
+  margin-bottom: 0.8em!important;
+}
+.input-group {
+  display: flex;
+  align-items: stretch;
+}
+.input-group .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group .btn-genpass {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* PREVIEW SEPARADO Y MODERNO */
+.inline-preview {
+  background: #20232b;
+  border-radius: 10px;
+  margin-top: 1.2em;
+  padding: 1em 1.2em;
+  color: #e2e8f0;
+  font-size: 1em;
+  box-shadow: 0 2px 12px #0004;
+}
+.inline-preview pre {
+  background: #181c23;
+  color: #ffd600;
+  border-radius: 7px;
+  padding: 0.7em 1em;
+  font-size: 0.98em;
+  margin-bottom: 0.5em;
+  white-space: pre-wrap;
+}
+.inline-preview h6 {
+  font-size: 1.1em;
+  color: #ffd600;
+  margin-bottom: 0.4em;
+}
+.inline-preview .btn-success {
+  background: #7fe7c4;
+  color: #181c23;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-top: 0.7em;
+}
+.inline-preview .btn-success:hover {
+  background: #6ec4ff;
+  color: #181c23;
+}
+
+/* ====== FIN MODAL INLINE FORMULARIO ====== */
+html, body {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif';
+    background: #181c23;
+    color: #e2e8f0;
+    min-height: 100vh;
+}
+
+pre, code, .ascii-banner, .installer-copy-block code {
+    font-family: 'Fira Mono', 'Menlo', 'Consolas', 'monospace' !important;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-items: center;
+    min-height: 70vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-grid:empty, .card-grid:has(.loading-message) {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+@media (max-width: 1200px) {
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
+}
+
+.card-template {
+    background: #232937;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #0004;
+    padding: 2rem 1.5rem 2.7rem 1.5rem; /* más padding abajo para el footer */
+    position: relative;
+    transition: transform 0.13s, box-shadow 0.13s;
+    min-height: 220px;
+    max-width: 320px;
+    min-width: 260px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.template-card-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem 1.1rem 1.5rem;
+    box-sizing: border-box;
+    background: transparent;
+    z-index: 2;
+}
+
+.template-category {
+    color: #ffd600;
+    font-weight: 600;
+    font-size: 1.04em;
+    margin-right: 1em;
+    white-space: nowrap;
+}
+
+.card-template .template-btn {
+    margin-top: 0;
+    align-self: auto;
+    background: #ffd600;
+    color: #181c23;
+    border: none;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
+}
+
+
+.card-template:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 6px 20px #0006;
+}
+.card-template .template-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+.card-template .template-desc {
+    color: #b5c0d0;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+.card-template .template-btn {
+    margin-top: auto;
+    align-self: flex-end;
+    background: #ffd600;
+    color: #181c23;
+    border: none;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
+    transition: background 0.13s, color 0.13s;
+}
+.card-template .template-btn:hover, .card-template .template-btn:focus {
+    background: #ffd600;
+    color: #181c23;
+    filter: brightness(1.08);
+    box-shadow: 0 0 0 2px #ffd60044;
+}
+
+.modal-easyvps .btn-primary {
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.07rem;
+  margin-top: 0.6rem;
+  padding: 0.7rem 1rem;
+  background: #ffd600;
+  color: #181c23;
+  border: none;
+  transition: background 0.13s, color 0.13s;
+}
+.modal-easyvps .btn-primary:hover, .modal-easyvps .btn-primary:focus {
+  background: #ffd600;
+  color: #181c23;
+  filter: brightness(1.08);
+  box-shadow: 0 0 0 2px #ffd60044;
+}
+
+.modal-easyvps .btn-genpass {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1.2px solid #e0e0e0;
+  background: #ffd600;
+  color: #181c23;
+  font-size: 1.2rem;
+  padding: 0 0.9rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.modal-easyvps .btn-genpass:hover, .modal-easyvps .btn-genpass:focus {
+  background: #ffd600;
+  color: #181c23;
+  filter: brightness(1.08);
+  box-shadow: 0 0 0 2px #ffd60044;
+}
+
+.btn {
+  background: #ffd600;
+  color: #181c23;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  transition: background 0.13s, color 0.13s;
+}
+.btn:hover, .btn:focus {
+  background: #ffd600;
+  color: #181c23;
+  filter: brightness(1.08);
+  box-shadow: 0 0 0 2px #ffd60044;
+}
+
+.inline-form-container.card {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.45s cubic-bezier(0.4,0.2,0.2,1), opacity 0.35s;
+    will-change: max-height, opacity;
+    margin-bottom: 1.5rem;
+}
+.inline-form-container.card.accordion-anim {
+    max-height: 900px; /* suficiente para el formulario */
+    opacity: 1;
+    transition: max-height 0.45s cubic-bezier(0.4,0.2,0.2,1), opacity 0.35s;
+}
+#search-bar {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 2rem auto;
+    border-radius: 10px;
+    background: #232937;
+    border: 1.5px solid #334155;
+    color: #e2e8f0;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.1rem;
+    outline: none;
+    box-shadow: 0 2px 10px #0002;
+    transition: border 0.18s, box-shadow 0.18s;
+}
+#search-bar:focus {
+    border-color: #ffd600;
+    box-shadow: 0 0 0 2px #ffd60044, 0 2px 10px #0002;
+}
+
+.loading-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: #b5c0d0;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+}
+
+.spinner {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #334155;
+    border-top: 5px solid #2dd4bf;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card-template .template-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    display: block;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #222b3a;
+    box-shadow: 0 2px 8px #0002;
+}
+

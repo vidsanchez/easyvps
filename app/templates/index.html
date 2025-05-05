@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EasyVPS - AUTOMATIZIA</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
+    <link rel="stylesheet" href="/static/css/modal-easyvps.css">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="ascii-banner-container mb-4" style="text-align:center;">
+      <pre class="ascii-banner" style="color:#ffd600;font-family:monospace;font-size:1.05em;line-height:1.15;margin-bottom:0;background:none;border:none;">
+  █████  ██    ██ ████████  ██████  ███    ███  █████  ████████ ██ ███████ ██  █████  
+ ██   ██ ██    ██    ██    ██    ██ ████  ████ ██   ██    ██    ██    ███  ██ ██   ██ 
+ ███████ ██    ██    ██    ██    ██ ██ ████ ██ ███████    ██    ██   ███   ██ ███████ 
+ ██   ██ ██    ██    ██    ██    ██ ██  ██  ██ ██   ██    ██    ██  ███    ██ ██   ██ 
+ ██   ██  ██████     ██     ██████  ██      ██ ██   ██    ██    ██ ███████ ██ ██   ██ 
+      </pre>
+      <div style="font-family:monospace;font-size:1.08em;color:#ffd600;letter-spacing:1px;margin-top:0.1em;margin-bottom:0.5em;">
+        ********************************* EasyVPS v1.0 ******************************
+      </div>
+    </div>
+    <div class="installer-banner mb-4" style="display:flex;flex-direction:column;align-items:center;">
+      <div id="installer-copy-block" class="installer-copy-block" tabindex="0" style="background:#232937;border-radius:16px;padding:1.1em 2em;display:inline-block;cursor:pointer;margin-bottom:0.5em;box-shadow:0 2px 16px #0003;transition:background 0.15s;">
+        <code style="font-family:monospace;font-size:1.25em;color:#fff;">bash &lt;(curl -sSL automatizia.online/vps/vpsinstall.sh)</code>
+        <span id="installer-copied" style="display:none;margin-left:1em;font-size:1em;color:#ffd600;">¡Copiado!</span>
+      </div>
+      <div style="color:#b5c0d0;font-size:1.08em;margin-top:0.1em;text-align:center;margin-bottom:2.2em;">Ejecuta este comando en un servidor GNU/Linux limpio con al menos 2 GB de RAM</div>
+    </div>
+    <input id="search-bar" class="search-bar mb-4" type="text" placeholder="Buscar..." autocomplete="off" />
+    <div id="plantillas-grid" class="card-grid">
+        <!-- Cards dinámicas aquí -->
+    </div>
+</div>
+<script type="module" src="/static/js/main.js"></script>
+<script src="/static/js/installer_banner.js"></script>
+</body>
+</html>

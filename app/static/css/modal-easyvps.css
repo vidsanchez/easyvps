@@ -1,0 +1,175 @@
+/* MODAL EASYVPS: estilos 100% independientes para evitar colisiones y asegurar visibilidad */
+.modal-backdrop-easyvps {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 2000;
+  background: rgba(24,28,35,0.85);
+  backdrop-filter: blur(8px);
+  animation: fadeInBg 0.3s;
+}
+@keyframes fadeInBg {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.modal-easyvps {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2100;
+  min-width: 320px;
+  max-width: 95vw;
+  max-height: 95vh;
+  width: 90vw;
+  height: 90vh;
+  animation: modalPopIn 0.25s cubic-bezier(.33,1.53,.69,1.03);
+  box-shadow: 0 12px 48px #000b, 0 2px 12px #0004;
+  border: 2px solid #232937;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+@keyframes modalPopIn {
+  from { opacity: 0; transform: translate(-50%,-46%) scale(0.92); }
+  to   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+}
+.modal-content-easyvps {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+  position: relative;
+  min-height: 200px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  color: #232937;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.modal-header-easyvps {
+  background: #f3f6fa;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 0.5rem 0.8rem 0.3rem 0.8rem;
+  margin-bottom: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+.modal-header-easyvps .modal-title-easyvps {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #1e293b;
+}
+.modal-header-easyvps .modal-meta-easyvps {
+  margin-bottom: 0.5rem;
+}
+.badge {
+  display: inline-block;
+  font-size: 0.97em;
+  font-weight: 500;
+  border-radius: 7px;
+  padding: 0.22em 0.9em;
+  margin-right: 0.4em;
+  margin-bottom: 0.2em;
+  background: #e0e7ef;
+  color: #1e293b;
+}
+.badge-category { background: #e0f2fe; color: #0369a1; }
+.badge-version { background: #fef9c3; color: #a16207; }
+.badge-tag { background: #f3e8ff; color: #7c3aed; }
+.badge-dep { background: #f1f5f9; color: #0e7490; }
+.badge-net { background: #f0fdf4; color: #15803d; }
+.modal-header-easyvps .modal-desc-easyvps {
+  color: #475569;
+  font-size: 1.13em;
+  margin-bottom: 0.5em;
+}
+.modal-header-easyvps .modal-deps-easyvps,
+.modal-header-easyvps .modal-nets-easyvps {
+  font-size: 1em;
+  margin-bottom: 0.3em;
+}
+
+.modal-title-easyvps {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #232937;
+}
+.modal-close-easyvps {
+  position: absolute;
+  top: 1.05rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.15s;
+}
+.modal-close-easyvps:hover { color: #dc3545; }
+.modal-easyvps .form-label {
+  font-weight: 500;
+  color: #ffffff;
+}
+.modal-easyvps .form-control {
+  border-radius: 10px;
+  border: 1.2px solid #e0e0e0;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  transition: border 0.2s;
+  color: #222;
+  background: #f8fafc;
+}
+.modal-easyvps .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px #007bff22;
+}
+.modal-easyvps .input-group {
+  display: flex;
+  align-items: stretch;
+}
+.modal-easyvps .btn-genpass {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1.2px solid #e0e0e0;
+  background: #f8f9fa;
+  color: #495057;
+  font-size: 1.2rem;
+  padding: 0 0.9rem;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.modal-easyvps .btn-genpass:hover {
+  background: #e2e6ea;
+}
+.modal-easyvps .form-text {
+  color: #6c757d;
+  font-size: 0.95em;
+  margin-top: 0.2rem;
+}
+.modal-easyvps .btn-primary {
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.07rem;
+  margin-top: 0.6rem;
+  padding: 0.7rem 1rem;
+}
+.modal-easyvps .inline-preview {
+  margin-top: 1.6rem;
+}
+@media (max-width: 500px) {
+  .modal-easyvps { width: 97vw; min-width: unset; }
+  .modal-content-easyvps { padding: 1.2rem 0.5rem 1rem 0.5rem; }
+}
