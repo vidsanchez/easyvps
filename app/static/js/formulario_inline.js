@@ -81,15 +81,16 @@ export function renderFormularioInline(cardElem, templateId, templateName) {
           const type = campo.type === 'password' ? 'text' : (campo.type || 'text');
           const required = campo.required ? 'required' : '';
           let inputHtml = '';
+          const defaultAttr = campo.default !== undefined ? `value='${String(campo.default).replace(/'/g, '&#39;')}'` : '';
           if (campo.type === 'password') {
             inputHtml = `
               <div class='input-group'>
-                <input type='text' class='form-control' name='${campo.field}' autocomplete='new-password' ${required} />
+                <input type='text' class='form-control' name='${campo.field}' autocomplete='new-password' ${required} ${defaultAttr}/>
                 <button type='button' class='btn btn-outline-secondary btn-genpass' tabindex='-1' title='Generar contraseña'>&#128273;</button>
               </div>
             `;
           } else {
-            inputHtml = `<input type='${type}' class='form-control' name='${campo.field}' ${required} />`;
+            inputHtml = `<input type='${type}' class='form-control' name='${campo.field}' ${required} ${defaultAttr}/>`;
           }
           return `
             <div class="form-field-block">
@@ -184,11 +185,62 @@ function enviarParaPreview(templateId, form, previewDiv) {
 }
 
 function mostrarPreview(compose, templateId, values, previewDiv) {
-    previewDiv.innerHTML = `<h6>Preview docker-compose.yml</h6><pre class='bg-light p-3'>${escapeHtml(compose)}</pre>`;
+    previewDiv.innerHTML = `<h6>Preview docker-compose.yml</h6><pre class='bg-light p-3' id='compose-preview-content'>${escapeHtml(compose)}</pre>`;
     const params = new URLSearchParams(values).toString();
     const url = `/download/${encodeURIComponent(templateId)}?${params}`;
-    previewDiv.innerHTML += `<a class='btn btn-success mt-2' href='${url}' download='docker-compose.yml'>Descargar Compose</a>`;
+    previewDiv.innerHTML += `
+      <div class="d-flex gap-2 mt-2">
+        <button class='btn btn-yellow flex-fill' id='btn-download-compose' type='button'>Descargar Compose</button>
+        <button class='btn btn-yellow flex-fill' id='btn-copy-compose' type='button'>Copiar Compose</button>
+      </div>
+      <span id='copy-feedback' style='display:none;color:#28a745;margin-left:0.5em;'>¡Copiado!</span>
+    `;
+
+    const downloadBtn = previewDiv.querySelector('#btn-download-compose');
+    const copyBtn = previewDiv.querySelector('#btn-copy-compose');
+    const feedback = previewDiv.querySelector('#copy-feedback');
+
+    downloadBtn.addEventListener('click', function() {
+      // Crea un blob y fuerza la descarga
+      const blob = new Blob([compose], { type: 'application/x-yaml' });
+      const urlBlob = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = urlBlob;
+      a.download = 'docker-compose.yml';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(urlBlob);
+      }, 100);
+    });
+
+    copyBtn.addEventListener('click', function() {
+      const composeText = compose;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(composeText).then(() => {
+          feedback.style.display = 'inline';
+          setTimeout(() => feedback.style.display = 'none', 1200);
+        });
+      } else {
+        // Fallback para navegadores antiguos
+        const pre = previewDiv.querySelector('#compose-preview-content');
+        const range = document.createRange();
+        range.selectNodeContents(pre);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        try {
+          document.execCommand('copy');
+          feedback.style.display = 'inline';
+          setTimeout(() => feedback.style.display = 'none', 1200);
+        } catch (e) {}
+        sel.removeAllRanges();
+      }
+    });
 }
+
+
 
 function mostrarError(msg, previewDiv) {
     previewDiv.innerHTML = `<div class='alert alert-danger'>${msg}</div>`;

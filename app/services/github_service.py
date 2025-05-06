@@ -62,7 +62,7 @@ def list_yaml_files(repo: str, path: str, token: Optional[str] = None) -> List[s
     files = resp.json()
     return [f["name"] for f in files if f["name"].endswith(('.yml', '.yaml'))]
 
-def get_file_content(repo: str, path: str, token: Optional[str] = None, use_cache: bool = True) -> str:
+def get_file_content(repo: str, path: str, token: Optional[str] = None, use_cache: bool = False) -> str:
     """
     Descarga el contenido de un archivo del repo (con cache en memoria).
 

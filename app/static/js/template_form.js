@@ -33,10 +33,11 @@ function cargarCampos(templateId) {
                 let type = campo.type || 'text';
                 // SVG de requerido
                 let requiredSvg = required ? `<svg class='required-indicator' width='9' height='9' viewBox='0 0 9 9'><circle cx='4.5' cy='4.5' r='4.5' fill='#e74c3c'/></svg>` : '';
+                const defaultAttr = campo.default !== undefined ? `value='${String(campo.default).replace(/'/g, '&#39;')}'` : '';
                 form.innerHTML += `
                   <div class="form-field-block">
                     <label class="form-label">${label}${requiredSvg}</label>
-                    <input type='${type}' class='form-control' name='${campo.field || campo}' ${required ? 'required' : ''}>
+                    <input type='${type}' class='form-control' name='${campo.field || campo}' ${required ? 'required' : ''} ${defaultAttr}>
                     ${description ? `<div class='form-description'>${description}</div>` : ''}
                   </div>`;
             });

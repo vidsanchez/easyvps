@@ -125,12 +125,20 @@ def generate_compose(req: GenerateRequest):
         content = github_service.get_file_content(repo, f"templates/{req.template_id}", token=token)
         parsed = template_service.parse_template_file(content)
         fields = parsed["fields"]
+        # Aplicar defaults antes de validar
+        from app.services.template_service import merge_with_defaults
+        merged_values = merge_with_defaults(fields, req.values)
         # Validación de campos dinámicos
-        validated, errors = validation_service.validate_user_fields(fields, req.values)
+        validated, errors = validation_service.validate_user_fields(fields, merged_values)
         if errors:
             return JSONResponse(status_code=400, content={"detail": errors})
-        yaml_content = parsed["yaml_content"]
-        result = compose_generator.render_compose_template(yaml_content, req.values)
+        # Extraemos el bloque 'template' como string, preservando formato
+        from app.services.template_service import extract_template_block, render_template_block
+        template_str = extract_template_block(content)
+        if not template_str:
+            raise HTTPException(status_code=400, detail="No se pudo extraer el bloque 'template' del YAML.")
+        # Sustituimos los valores del usuario en el string
+        result = render_template_block(template_str, merged_values)
         return JSONResponse(content={"compose": result})
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error generando compose: {e}")
@@ -157,12 +165,16 @@ def download_compose(template_id: str, request: Request):
         parsed = template_service.parse_template_file(content)
         yaml_content = parsed["yaml_content"]
         # Extrae todos los query params como dict
+        from app.services.template_service import merge_with_defaults
+        fields = parsed.get("fields", [])
         values = dict(request.query_params)
-        result = compose_generator.render_compose_template(yaml_content, values)
+        merged_values = merge_with_defaults(fields, values)
+        # Usamos directamente el dict extraído de 'template' para evitar problemas de indentación
+        result = compose_generator.render_compose_template(parsed["yaml_content_dict"], merged_values)
         return StreamingResponse(
             iter([result]),
             media_type="application/x-yaml",
             headers={"Content-Disposition": "attachment; filename=docker-compose.yml"}
         )
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Error generando compose para descarga: {e}")
+        raise HTTPException(status_code=400, detail=f"Error generando compose para descarga -> {e}")

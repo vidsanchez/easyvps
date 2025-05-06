@@ -58,6 +58,32 @@ def test_generate_compose_missing_field():
     data = resp.json()
     assert "[[password]]" in data["compose"]
 
+def test_generate_compose_default_applied():
+    """
+    Si el usuario omite un campo pero hay default en la plantilla, el compose generado debe usar el default.
+    """
+    template_id = "baserow.yaml"
+    # Suponiendo que el campo 'subdominio' tiene default 'demo123' en la plantilla
+    values = {"username": "test", "password": "secret"}
+    resp = client.post("/generate", json={"template_id": template_id, "values": values})
+    assert resp.status_code == 200
+    data = resp.json()
+    # El default debe aparecer en el compose
+    assert "demo123" in data["compose"]
+
+def test_generate_compose_default_and_placeholder():
+    """
+    Si el usuario omite un campo sin default, queda el placeholder; si omite uno con default, se aplica el default.
+    """
+    template_id = "baserow.yaml"
+    # Suponiendo que 'subdominio' tiene default 'demo123' y 'password' no tiene default
+    values = {"username": "test"}
+    resp = client.post("/generate", json={"template_id": template_id, "values": values})
+    assert resp.status_code == 200
+    data = resp.json()
+    assert "demo123" in data["compose"]  # default aplicado
+    assert "[[password]]" in data["compose"]  # placeholder porque no hay default
+
 def test_generate_compose_not_found():
     """
     Failure: plantilla no existe, debe dar 400.
